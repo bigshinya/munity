@@ -6,6 +6,14 @@ Rails.application.routes.draw do
     :passwords => 'users/passwords'
   }
 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :posts, only: [:new, :create, :edit, :update, :destroy]
+  resources :relationships, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

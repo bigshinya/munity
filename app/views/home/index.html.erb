@@ -1,4 +1,40 @@
-<% unless user_signed_in? %>
+<% if user_signed_in? %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-8">
+        <div class="timeline-centered">
+          <% @posts.each do |post| %>
+            <article class="timeline-entry">
+              <div class="timeline-entry-inner">
+                <div class="timeline-icon bg-success">
+                  <i class="entypo-feather"></i>
+                </div>
+                <div class="timeline-label">
+                  <h2><%= link_to "#{set_full_name(post.user)} ", user_path(post.user)  %><span>posted a status update <small><%= time_ago_in_words(post.created_at) %><small></span></h2>
+                  <p><%= post.body %></p>
+                </div>
+              </div>
+            </article>
+          <% end %>
+          <article class="timeline-entry begin">
+            <div class="timeline-entry-inner">
+              <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+                <i class="entypo-flight"></i> +
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="col-sm-4 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= render 'shared/post_form.html.erb' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
   <%= link_to new_user_registration_path do %>
     <i class="fa fa-power-off"></i> Sign up
   <% end %>

@@ -17,7 +17,9 @@
 
     <%= f.input :age, input_wrapper_html: { class: "col-xs-4" } %>
 
-    <%= f.input :sex, collection: [["male", 1],["female", 2],["ather", 3]], as: :radio_buttons, item_wrapper_class: "inline" %>
+    <%#= f.input :sex, collection: [["male", 1],["female", 2],["ather", 3]], as: :radio_buttons, item_wrapper_class: "inline" %>
+
+    <%= f.input :nationality, input_wrapper_html: { class: "col-xs-4" } %>
 
     <%= f.button :submit, :class => 'btn-primary' %>
 <% end %>

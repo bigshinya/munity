@@ -1,0 +1,7 @@
+<%= form_for(current_user.relationships.find_by(followed_id: @user.id),
+             html: { method: :delete }) do |f| %>
+  <%= button_tag type: "submit", class: "btn btn-default btn-block" do %>
+
+    <span class="fa fa-times-circle-o"></span>Unfollow
+  <% end %>
+<% end %>

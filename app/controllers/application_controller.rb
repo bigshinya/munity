@@ -3,30 +3,19 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   protected
-    def configure_permitted_parameters
-      # sign up
-      devise_parameter_sanitizer.for(:sign_up) << :first_name
-      devise_parameter_sanitizer.for(:sign_up) << :last_name
-      devise_parameter_sanitizer.for(:sign_up) << :age
-      devise_parameter_sanitizer.for(:sign_up) << :sex
-      devise_parameter_sanitizer.for(:sign_up) << :nationality
-      devise_parameter_sanitizer.for(:sign_up) << :type
 
-      # sign in
-      devise_parameter_sanitizer.for(:sign_in) << :first_name
-      devise_parameter_sanitizer.for(:sign_in) << :last_name
-      devise_parameter_sanitizer.for(:sign_in) << :age
-      devise_parameter_sanitizer.for(:sign_in) << :sex
-      devise_parameter_sanitizer.for(:sign_in) << :nationality
-      devise_parameter_sanitizer.for(:sign_in) << :type
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:first_name,
+                                                                  :last_name,
+                                                                  :password,
+                                                                  :password_confirmation,
+                                                                  :current_password,
+                                                                  :age,
+                                                                  :sex,
+                                                                  :nationality)}
+  end
 
-      # sign in
-      devise_parameter_sanitizer.for(:account_update) << :first_name
-      devise_parameter_sanitizer.for(:account_update) << :last_name
-      devise_parameter_sanitizer.for(:account_update) << :age
-      devise_parameter_sanitizer.for(:account_update) << :sex
-      devise_parameter_sanitizer.for(:account_update) << :nationality
-      devise_parameter_sanitizer.for(:account_update) << :type      
-    end
 end

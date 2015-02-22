@@ -1,0 +1,12 @@
+<div class="col-sm-4 col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= simple_form_for(@post) do |f| %>
+        <%= f.input :body, placeholder: 'Type in your message', label: false, input_html: {rows: 5,style: 'margin-bottom:10px;',class: 'counted'} %>
+        <h6 class="pull-right" id="counter">320 characters remaining</h6>
+        <%= f.button :submit, 'Post New Message', :class => 'btn btn-info' %>
+      <% end %>
+      </form>
+    </div>
+  </div>
+</div>

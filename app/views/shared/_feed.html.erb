@@ -1,0 +1,22 @@
+<div class="timeline-centered">
+  <% @posts.each do |post| %>
+    <article class="timeline-entry">
+      <div class="timeline-entry-inner">
+        <div class="timeline-icon bg-success">
+          <i class="entypo-feather"></i>
+        </div>
+        <div class="timeline-label">
+          <h2><%= link_to "#{set_full_name(post.user)} ", user_path(post.user)  %><span>posted a status update <small><%= time_ago_in_words(post.created_at) %><small></span></h2>
+          <p><%= post.body %></p>
+        </div>
+      </div>
+    </article>
+  <% end %>
+  <article class="timeline-entry begin">
+    <div class="timeline-entry-inner">
+      <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
+        <i class="entypo-flight"></i> +
+      </div>
+    </div>
+  </article>
+</div>
