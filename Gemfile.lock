@@ -53,6 +53,11 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     choice (0.1.7)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -138,6 +143,7 @@ GEM
     rdoc (4.2.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rmagick (2.13.4)
     ruby-graphviz (1.0.9)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -185,6 +191,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.2.0)
+  carrierwave
   coffee-rails (~> 4.0.0)
   devise
   font-awesome-sass
@@ -200,6 +207,7 @@ DEPENDENCIES
   rails (= 4.1.7)
   rails-erd!
   rails_12factor
+  rmagick
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form

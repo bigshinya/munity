@@ -6,8 +6,8 @@
           <% @posts.each do |post| %>
             <article class="timeline-entry">
               <div class="timeline-entry-inner">
-                <div class="timeline-icon bg-success">
-                  <i class="entypo-feather"></i>
+                <div class="timeline-icon bg-success" style="overflow: auto;">
+                  <i class="entypo-feather" ></i><%= image_tag post.user.user_image.image.mini.url %>
                 </div>
                 <div class="timeline-label">
                   <h2><%= link_to "#{set_full_name(post.user)} ", user_path(post.user)  %><span>posted a status update <small><%= time_ago_in_words(post.created_at) %><small></span></h2>

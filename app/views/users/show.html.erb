@@ -16,7 +16,7 @@
         </div>             
         <div class="col-xs-12 col-sm-4 text-center">
           <figure>
-            <%= image_tag 'shinya.jpg', class: 'img-circle img-responsive' %>
+            <%= image_tag @user_image.image.thumb.url, class: 'img-circle img-responsive' if @user_image.present? %>
             <figcaption class="ratings">
               <p>Ratings
                 <a href="#">

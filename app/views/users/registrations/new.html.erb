@@ -5,6 +5,15 @@
 
   <%= f.input :email, autofocus: true, input_wrapper_html: { class: "col-xs-4" } %>
 
+  <!--   <div class="field"> -->
+    <%= f.label :user_image, resource.build_user_image %><br>
+    <%= f.fields_for :user_image do |user_image_form| %>
+      <%= user_image_form.file_field :image %>
+      <%= image_tag @user.user_image.image.thumb.url if @user.user_image.present? %>
+      <!-- DBに保存されていない場合のみ表示 = 更新時のみ表示 -->
+    <% end %>
+    <!--  </div> -->
+
   <%= f.input :password, autocomplete: "off", input_wrapper_html: { class: "col-xs-4" } %>
 
   <%= f.input :password_confirmation, autocomplete: "off", input_wrapper_html: { class: "col-xs-4" } %>

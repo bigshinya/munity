@@ -6,6 +6,9 @@ gem 'rails', '4.1.7'
 # ユーザー認証
 gem 'devise'
 
+gem 'carrierwave'
+gem 'rmagick'
+
 group :development do
   gem 'puma'
   gem 'sqlite3'

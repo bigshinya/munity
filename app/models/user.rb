@@ -14,6 +14,11 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  # has_oneにする その際、user_imagesが使えなくなるので修正が必要
+  has_one :user_image, dependent: :destroy
+  accepts_nested_attributes_for :user_image, allow_destroy: true
+
+
 
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)
