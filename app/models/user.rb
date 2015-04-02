@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
   def self.find_for_github_oauth(auth)  
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
+<<<<<<< HEAD
+      user.name = auth.info.nickname
+=======
+>>>>>>> a50c028... Githubログイン実装完了
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
