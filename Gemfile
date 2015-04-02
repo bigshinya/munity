@@ -6,6 +6,9 @@ gem 'rails', '4.1.7'
 # ユーザー認証
 gem 'devise'
 
+gem 'omniauth'
+gem 'omniauth-github'
+
 gem 'carrierwave'
 gem 'rmagick'
 
@@ -21,6 +24,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
+  gem 'rails-footnotes'
 end
 
 group :production do
