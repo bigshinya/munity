@@ -12,6 +12,8 @@ gem 'omniauth-github'
 gem 'carrierwave'
 gem 'rmagick'
 
+gem 'fog'
+
 group :development do
   gem 'puma'
   gem 'sqlite3'

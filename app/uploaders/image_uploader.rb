@@ -5,6 +5,9 @@ class ImageUploader < CarrierWave::Uploader::Base
  # リサイズしたり画像形式を変更するのに必要
   include CarrierWave::RMagick
 
+  # S3 strage
+  storage :fog
+
  # 画像の上限を700pxにする
   process :resize_to_limit => [700, 700]
 
