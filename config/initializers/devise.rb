@@ -6,6 +6,14 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # config.secret_key = 'a5170dbb958644b4130af14b2b9b04447103d56db335b7ee6f701e4e9d75eaceff47136e895bbf7bccf3e78e753c4481e1b43b207d7380057c8b855869400e52'
 
+  # API key
+  if Rails.env.production?     
+    config.omniauth :github, ENV["PRO_GITHUB_KEY"], ENV["PRO_GITHUB_SECRET"], :scope => 'user:email'
+  else
+    config.omniauth :github, ENV['DEV_GITHUB_KEY'], ENV['DEV_GITHUB_SECRET'], :scope => 'user:email'
+    # config.omniauth :github, "5ff0a4831d8bdb9ba52f", "5bed10c97330555822cf84872b681d8945e9242f", :scope => 'user:email'
+  end
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
