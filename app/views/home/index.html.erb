@@ -35,7 +35,8 @@
     </div>
   </div>
 <% else %>
-  <%= link_to new_user_registration_path do %>
-    <i class="fa fa-power-off"></i> Sign up
-  <% end %>
+  <%#= link_to new_user_registration_path do %>
+    <!-- <i class="fa fa-power-off"></i> Sign up <br /> -->
+  <%# end %>
+  <%= link_to "Sign in with GitHub", user_omniauth_authorize_path(:github) %>
 <% end %>
