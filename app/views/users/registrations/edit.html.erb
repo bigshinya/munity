@@ -26,16 +26,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
     <%= f.label :user_image %><br>
     <%= f.fields_for :user_image do |user_image_form| %>
       <%= user_image_form.label :image %>

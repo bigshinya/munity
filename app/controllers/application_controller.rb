@@ -11,19 +11,14 @@ class ApplicationController < ActionController::Base
 
 
     devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:email,
-                                                                  :password,
-                                                                  :password_confirmation,
-                                                                  user_image_attributes: [:id, :image, :user_id])}
+                                                           :password,
+                                                           :password_confirmation,
+                                                           user_image_attributes: [:id, :image, :user_id])}
 
     devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:email,
-                                                                  :first_name,
-                                                                  :last_name,
                                                                   :password,
                                                                   :password_confirmation,
                                                                   :current_password,
-                                                                  :age,
-                                                                  :sex,
-                                                                  :nationality,
                                                                   user_image_attributes: [:id, :image, :user_id, :_destroy])}
   end
 
