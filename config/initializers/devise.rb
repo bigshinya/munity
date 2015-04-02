@@ -11,7 +11,6 @@ Devise.setup do |config|
     config.omniauth :github, Rails.application.secrets.github_api_key, Rails.application.secrets.github_api_secret, :scope => 'user,repo,public_repo,repo:status,notifications,gist'
   else
     config.omniauth :github, Rails.application.secrets.dev_github_api_key, Rails.application.secrets.dev_github_api_secret, :scope => 'user,repo,public_repo,repo:status,notifications,gist'
-    # config.omniauth :github, "5ff0a4831d8bdb9ba52f", "f49c787a11073d151c2191e8e44465f5b36110c3", :scope => 'user:email'
   end
 
   # ==> Mailer Configuration
