@@ -8,10 +8,10 @@ Devise.setup do |config|
 
   # API key
   if Rails.env.production?     
-    config.omniauth :github, ENV["PRO_GITHUB_KEY"], ENV["PRO_GITHUB_SECRET"], :scope => 'user:email'
+    config.omniauth :github, Rails.application.secrets.github_api_key, Rails.application.secrets.github_api_secret, :scope => 'user,repo,public_repo,repo:status,notifications,gist'
   else
-    config.omniauth :github, ENV['DEV_GITHUB_KEY'], ENV['DEV_GITHUB_SECRET'], :scope => 'user:email'
-    # config.omniauth :github, "5ff0a4831d8bdb9ba52f", "5bed10c97330555822cf84872b681d8945e9242f", :scope => 'user:email'
+    config.omniauth :github, Rails.application.secrets.dev_github_api_key, Rails.application.secrets.dev_github_api_secret, :scope => 'user,repo,public_repo,repo:status,notifications,gist'
+    # config.omniauth :github, "5ff0a4831d8bdb9ba52f", "f49c787a11073d151c2191e8e44465f5b36110c3", :scope => 'user:email'
   end
 
   # ==> Mailer Configuration
