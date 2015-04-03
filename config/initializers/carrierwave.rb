@@ -18,4 +18,5 @@ CarrierWave.configure do |config|
 
     config.fog_directory = 'dev-munity'
   end 
+
 end
