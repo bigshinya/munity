@@ -3,6 +3,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.find_for_github_oauth(request.env["omniauth.auth"])
  
+    # github access_token取得
+    @octokit_client = Octokit::Client.new :access_token => request.env["omniauth.auth"][:credentials][:token]
+    session[:access_token] = request.env["omniauth.auth"][:credentials][:token]
+
     if @user.persisted?
       set_flash_message(:notice, :success, :kind => "Github") if is_navigational_format?
       sign_in_and_redirect @user, :event => :authentication
@@ -10,6 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.github_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
+
   end
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
