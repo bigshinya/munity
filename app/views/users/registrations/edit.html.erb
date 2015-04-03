@@ -25,10 +25,10 @@
     <%= f.password_field :current_password %>
   </div>
 
+
   <div class="field">
-    <%= f.label :user_image %><br>
+    <%= f.label :user_image, resource.build_user_image %><br>
     <%= f.fields_for :user_image do |user_image_form| %>
-      <%= user_image_form.label :image %>
       <%= user_image_form.file_field :image %>
       <%= image_tag @user.user_image.image.thumb.url if @user.user_image.present? %>
       <!-- DBに保存されていない場合のみ表示 = 更新時のみ表示 -->

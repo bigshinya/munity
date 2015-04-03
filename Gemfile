@@ -9,6 +9,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
 
+gem 'octokit'
+
 gem 'carrierwave'
 gem 'rmagick'
 
