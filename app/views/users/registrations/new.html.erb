@@ -1,24 +1,47 @@
 <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: "horizontal_form", :html => { :class => 'form-horizontal' }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: "horizontal_form", :html => { :class => 'form-horizontal' }) do |f| %>
   <%= devise_error_messages! %>
 
-  <%= f.input :email, autofocus: true, input_wrapper_html: { class: "col-xs-4" } %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, value: session[:github_data]["info"]["nickname"], disabled: "disabled" %>
+  </div>
 
-  <!--   <div class="field"> -->
-    <%= f.label :user_image, resource.build_user_image %><br>
-    <%= f.fields_for :user_image do |user_image_form| %>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, value: session[:github_data]["info"]["email"], disabled: "disabled" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_image %><br>
+    <%= f.fields_for :user_image, resource.build_user_image do |user_image_form| %>
       <%= user_image_form.file_field :image %>
       <%= image_tag @user.user_image.image.thumb.url if @user.user_image.present? %>
-      <!-- DB$B$KJ]B8$5$l$F$$$J$$>l9g$N$_I=<((B = $B99?7;~$N$_I=<((B -->
+      <!-- DBに保存されていない場合のみ表示 = 更新時のみ表示 -->
     <% end %>
-    <!--  </div> -->
+  </div>
 
-  <%= f.input :password, autocomplete: "off", input_wrapper_html: { class: "col-xs-4" } %>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password, autofocus: true %>
+  </div>
 
-  <%= f.input :password_confirmation, autocomplete: "off", input_wrapper_html: { class: "col-xs-4" } %>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
 
-  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= f.hidden_field :name, value: session[:github_data]["info"]["name"] %>
+  <%= f.hidden_field :email, value: session[:github_data]["info"]["email"] %>
+  <%= f.hidden_field :provider, value: session[:github_data]["provider"] %>
+  <%= f.hidden_field :uid, value: session[:github_data]["uid"] %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
 <% end %>
+
 
 <%= render "devise/shared/links" %>

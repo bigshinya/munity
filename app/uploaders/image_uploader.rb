@@ -7,6 +7,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # S3 strage
   storage :fog
 
+  # Local strage
+  # storage :file
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end

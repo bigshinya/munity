@@ -6,8 +6,13 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, disabled: "disabled" %>
+  </div>  
+
+  <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email, autofocus: true %>
+    <%= f.text_field :email, disabled: "disabled" %>
   </div>
 
   <div class="field">
@@ -22,21 +27,28 @@
 
   <div class="field">
     <%= f.label :current_password %><br>
-    <%= f.password_field :current_password %>
+    <%= f.password_field :current_password, autofocus: true %>
   </div>
 
-
-  <div class="field">
-    <%= f.label :user_image, resource.build_user_image %><br>
-    <%= f.fields_for :user_image do |user_image_form| %>
-      <%= user_image_form.file_field :image %>
-      <%= image_tag @user.user_image.image.thumb.url if @user.user_image.present? %>
-      <!-- DBに保存されていない場合のみ表示 = 更新時のみ表示 -->
-    <% end %>
-  </div>
+  <% if @user.user_image.present? %>
+    <div class="field">
+      <%= f.label :user_image %><br>
+      <%= f.fields_for :user_image do |user_image_form| %>
+        <%= user_image_form.file_field :image %>
+        <%= image_tag @user.user_image.image.thumb.url %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= f.label :user_image %><br>
+      <%= f.fields_for :user_image, resource.build_user_image do |user_image_form| %>
+        <%= user_image_form.file_field :image %>
+        <%= image_tag @user.user_image.image.thumb.url %>
+      <% end %>
+    </div>
+  <% end %>
 
   <br>
-
 
   <div class="actions">
     <%= f.submit %>
