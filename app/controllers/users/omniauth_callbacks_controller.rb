@@ -5,6 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
  
     # github access_token取得
     # @octokit_client = Octokit::Client.new :access_token => request.env["omniauth.auth"][:credentials][:token]
+
     session[:access_token] = request.env["omniauth.auth"][:credentials][:token]
 
     if @user.persisted?
