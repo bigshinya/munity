@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def get_client_for_octokit
     if Rails.env.production?
-      client = Octokit::Client.new :access_token => Rails.application.secrets.github_access_token #request.env[:access_token]
+      client = Octokit::Client.new :access_token => ENV["GITHUB_ACCESS_TOKEN"] #request.env[:access_token]
     else
       client = Octokit::Client.new :access_token => Rails.application.secrets.dev_github_access_token #request.env[:access_token]
     end

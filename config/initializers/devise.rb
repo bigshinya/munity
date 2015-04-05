@@ -8,7 +8,7 @@ Devise.setup do |config|
 
   # API key
   if Rails.env.production?     
-    config.omniauth :github, Rails.application.secrets.github_api_key, Rails.application.secrets.github_api_secret, :scope => 'user,repo,public_repo,repo:status,notifications,gist'
+    config.omniauth :github, ENV["GITHUB_API_KEY"], ENV["GITHUB_API_SECRET"], :scope => 'user,repo,public_repo,repo:status,notifications,gist'
   else
     config.omniauth :github, Rails.application.secrets.dev_github_api_key, Rails.application.secrets.dev_github_api_secret, :scope => 'user,repo,public_repo,repo:status,notifications,gist'
   end
