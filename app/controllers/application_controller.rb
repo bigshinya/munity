@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
   end
 
   def get_client_for_octokit
-    Octokit::Client.new :access_token => "916c7cf2289d349be3f94e774a0778f5a3b8952a"  #request.env[:access_token]
+    if Rails.env.production?
+      client = Octokit::Client.new :access_token => Rails.application.secrets.github_access_token #request.env[:access_token]
+    else
+      client = Octokit::Client.new :access_token => Rails.application.secrets.dev_github_access_token #request.env[:access_token]
+    end
   end
 end
