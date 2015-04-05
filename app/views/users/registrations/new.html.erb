@@ -32,7 +32,7 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <%= f.hidden_field :name, value: session[:github_data]["info"]["name"] %>
+  <%= f.hidden_field :name, value: session[:github_data]["info"]["nickname"] %>
   <%= f.hidden_field :email, value: session[:github_data]["info"]["email"] %>
   <%= f.hidden_field :provider, value: session[:github_data]["provider"] %>
   <%= f.hidden_field :uid, value: session[:github_data]["uid"] %>
