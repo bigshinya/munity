@@ -13,6 +13,8 @@ Devise.setup do |config|
     config.omniauth :github, Rails.application.secrets.dev_github_api_key, Rails.application.secrets.dev_github_api_secret, :scope => 'user,repo,public_repo,repo:status,notifications,gist'
   end
 
+  config.secret_key = ENV['DEVISE_SECRET_KEY']
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class

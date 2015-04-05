@@ -1,0 +1,15 @@
+/* line 1, /Users/shinyahirai/rorworks/munity/app/assets/stylesheets/movietop/top.css.scss */
+body {
+  padding-top: 0px;
+}
+
+/* line 5, /Users/shinyahirai/rorworks/munity/app/assets/stylesheets/movietop/top.css.scss */
+#tubular-player {
+  height: 120% !important;
+}
+
+/* line 9, /Users/shinyahirai/rorworks/munity/app/assets/stylesheets/movietop/top.css.scss */
+#overlay {
+  margin-left: 70%;
+  margin-top: 300px;
+}
