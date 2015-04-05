@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :user_image, allow_destroy: true
 
   def self.find_for_github_oauth(auth)  
+<<<<<<< HEAD
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
 <<<<<<< HEAD
@@ -28,6 +29,14 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
+=======
+    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+      # user.provider = auth.provider
+      # user.uid = auth.uid
+      # user.name = auth.info.nickname
+      # user.email = auth.info.email
+      # user.password = Devise.friendly_token[0,20]
+>>>>>>> 9f37130... Github API v3とoctokitでユーザーごとの情報取得 #4
       #  user.token = 
     end
   end

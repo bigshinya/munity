@@ -15,4 +15,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:email, :password, :password_confirmation, :current_password, :name, user_image_attributes: [:id, :image, :user_id, :_destroy])}
   end
 
+  def get_client_for_octokit
+    Octokit::Client.new :access_token => "916c7cf2289d349be3f94e774a0778f5a3b8952a"  #request.env[:access_token]
+  end
 end

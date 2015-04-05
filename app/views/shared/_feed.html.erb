@@ -6,7 +6,7 @@
           <i class="entypo-feather"></i>
         </div>
         <div class="timeline-label">
-          <h2><%= link_to "#{set_full_name(post.user)} ", user_path(post.user)  %><span>posted a status update <small><%= time_ago_in_words(post.created_at) %><small></span></h2>
+          <h2><%= post.user.name %> <span>posted a status update <small><%= time_ago_in_words(post.created_at) %><small></span></h2>
           <p><%= post.body %></p>
         </div>
       </div>
