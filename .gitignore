@@ -15,8 +15,6 @@
 /log/*.log
 /tmp
 
-# secret.yml
-/config/secrets.yml
 
 # public images
 /public/uploaders
@@ -29,7 +27,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -81,7 +80,8 @@ Session.vim
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
