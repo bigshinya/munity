@@ -7,10 +7,10 @@
             <article class="timeline-entry">
               <div class="timeline-entry-inner">
                 <div class="timeline-icon bg-success" style="overflow: auto;">
-                  <i class="entypo-feather" ></i><%= image_tag post.user.user_image.image.mini.url %>
+                  <i class="entypo-feather" ></i><%#= image_tag post.user.user_image.image.mini.url %>
                 </div>
                 <div class="timeline-label">
-                  <h2><%= link_to "#{set_full_name(post.user)} ", user_path(post.user)  %><span>posted a status update <small><%= time_ago_in_words(post.created_at) %><small></span></h2>
+                  <h2><%= link_to post.user.name, user_path(post.user)  %><span>posted a status update <small><%= time_ago_in_words(post.created_at) %><small></span></h2>
                   <p><%= post.body %></p>
                 </div>
               </div>
@@ -35,8 +35,12 @@
     </div>
   </div>
 <% else %>
-  <%#= link_to new_user_registration_path do %>
-    <!-- <i class="fa fa-power-off"></i> Sign up <br /> -->
-  <%# end %>
-  <%= link_to "Sign in with GitHub", user_omniauth_authorize_path(:github) %>
+  <!-- Full screen動画背景 -->
+  <div id="movie">
+    <h2 id="overlay">
+      <%= link_to user_omniauth_authorize_path(:github) do %>
+       <i class="fa fa-power-off"></i> Sign in with GitHub
+     <% end %>
+    </h2>
+  </div>
 <% end %>

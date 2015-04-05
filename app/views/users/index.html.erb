@@ -6,7 +6,7 @@
           <%= image_tag @user_images.find_by(user_id:user).image.thumb.url, class: 'media-object dp img-circle', style: 'width: 100px;height:100px;' if @user_images.find_by(user_id:user).present? %>
         <% end %>
         <div class="media-body">
-          <h4 class="media-heading"><%= user.email %><small> </small></h4>
+          <h4 class="media-heading"><%= link_to user.name, user_path(user) %><small> </small></h4>
           <h5>Software Developer at <a href="http://gridle.in">Gridle.in</a></h5>
           <hr style="margin:8px auto">
 

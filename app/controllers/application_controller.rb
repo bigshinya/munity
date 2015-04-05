@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) {|u| u.permit(:email, :password, :password_confirmation, :current_password, :name, user_image_attributes: [:id, :image, :user_id, :_destroy])}
   end
 
+  def get_client_for_octokit
+    if Rails.env.production?
+      client = Octokit::Client.new :access_token => Rails.application.secrets.github_access_token #request.env[:access_token]
+    else
+      client = Octokit::Client.new :access_token => Rails.application.secrets.dev_github_access_token #request.env[:access_token]
+    end
+  end
 end

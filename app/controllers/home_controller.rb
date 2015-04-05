@@ -4,5 +4,6 @@ class HomeController < ApplicationController
       @posts = current_user.feed
       @post = current_user.posts.build
     end
+
   end
 end

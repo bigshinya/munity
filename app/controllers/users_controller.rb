@@ -8,5 +8,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.all
     @user_image = @user.user_image
+
+    @repos = get_client_for_octokit.list_repos(@user.name)
   end
 end
